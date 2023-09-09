@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoices</title>
+    <style>
+        body {
+            background-color: grey;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+        }
+        th {
+            background-color: darkgrey;
+        }
+    </style>
+</head>
+<body>
+<h1>Invoices</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Invoice Number</th>
+        <th>Customer Name</th>
+        <th>Vehicle Identification Number</th>
+        <th>Date</th>
+        <th>Total Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="invoice : ${invoices}">
+        <td th:text="${invoice.invoiceNumber}"></td>
+        <td th:text="${invoice.customerFacade.name}"></td>
+        <td th:text="${invoice.order.carFacade.vin}"></td>
+        <td th:text="${invoice.date}"></td>
+        <td th:text="${invoice.totalAmount}"></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<button onclick="window.location.href = 'index.html';">Back to Home</button>
+</body>
+</html>
